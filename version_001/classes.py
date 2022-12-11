@@ -5,7 +5,7 @@ class Unit:
 
 class Capacity:
     def __init__(self, capacity:float, amount:float, unit:Unit):
-        self.capacity = capacity #общая вместимость
+        self.CAPACITY = capacity #общая вместимость
         self.amount = amount #количество товара
         self.unit = unit
 
@@ -13,7 +13,9 @@ class Capacity:
         return self.amount <= 0
 
     def get_capacity(self)->float:
-        return self.capacity
+        return self.CAPACITY
+    def get_amount(self)->float:
+        return self.amount
 
     def take(self, request_amount:float) -> float:
         if self.amount <= 0:
@@ -28,7 +30,6 @@ class Capacity:
         return request_amount
 
     def put(self, request_amount:float) -> float:
-
         self.amount += request_amount
         return request_amount
 
@@ -38,19 +39,16 @@ class Storage (Capacity):
         self.address = address
 
     def __str__(self) -> str:
-        return f"The address this storage is {self.address}, capacity: {self.capacity}. Occupancy the storage: {(self.capacity-self.amount)}"
+        return f"The address this storage is {self.address}, capacity: {self.CAPACITY}. Occupancy the storage: {(self.amount)}"
 
 #здесь внёс изменения
 class Shop(Capacity):
     def __init__(self, address:str, capacity:float, amount:float, unit:Unit) -> None:
         super().__init__(capacity=capacity, amount=amount, unit=unit)
         self.address = address
-        #self.capacity = capacity
-        #self.amount = amount
-        #self.unit = unit
 
     def __str__(self) -> str:
-        return f"The address this shop is {self.address}, capacity: {self.capacity}. Occupancy the shop: {(self.capacity-self.amount)}"
+        return f"The address this shop is {self.address}, capacity: {self.CAPACITY}. Occupancy the shop: {(self.CAPACITY-self.amount)}"
 
 class CarParking:
     def __init__(self) -> None:
@@ -63,10 +61,9 @@ class Truck (Capacity):
 
     def __init__(self, capacity:float, amount:float, unit:Unit) -> None:
         super().__init__(capacity, amount, unit)
-        pass
 
     def __str__(self) -> str:
-        pass
+        return f'Truck cap={super().get_capacity()} amount={super().get_amount()}'
 
     def put(self, request_amount:float):
         super().put(request_amount)
@@ -81,7 +78,6 @@ class Loader (Capacity):
 
     def __init__(self, capacity:float, amount:float, unit:Unit) -> None:
         super().__init__(capacity, amount, unit)
-        pass
 
     def __str__(self) -> str:
         pass
@@ -89,8 +85,8 @@ class Loader (Capacity):
     def load(self, obj:Capacity, request_amount:float):
         obj.take(request_amount)
 
-    def unload(self, obj:Capacity, request_amount:float):
-        obj.capacity = 0
+    def unload(self, obj:Capacity, request_amount:float)->float:
+        return obj.take(request_amount)
 
 class Timer:
 
