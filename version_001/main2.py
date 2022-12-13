@@ -14,20 +14,19 @@ print(shop_1, '\n' ,shop_2)
 
 ld: Loader = Loader(2, 0, kg)
 
-trucks: list[Truck] = list()
+actors: list[Actor] = list()
 for i in range(0,6):
-    trucks.append(Truck(10,0,kg))
+    actors.append(Truck(10,0,kg))
 
-i = 1
-while (not storage_1.is_empty()):
-    for t in trucks:
-        t.put(storage_1.take(t.get_capacity()))
-        # print(t)
+for i in range(0,6):
+    actors.append(Loader(2,0,kg))
 
-        storage_3.put(t.take(t.get_amount()))
-
-    # print(f'{i} {storage_1}')
-    # print(f'{i} {storage_3}')
+hasToDo = True
+i = 0
+while (hasToDo):
+    hasToDo = False
+    for a in actors:
+        hasToDo = hasToDo or a.tick()
     i += 1
 
 print("=====================================")
