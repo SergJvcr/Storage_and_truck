@@ -1,4 +1,5 @@
-from model import Unit, Storage, Shop, Loader, Actor, Truck
+# from model import Unit, Storage, Shop, Loader, Actor, Truck
+import model.Unit as Unit, model.Storage as Storage, model.Shop as Shop, model.Loader as Loader, model.Truck as Truck
 
 kg:Unit = Unit("kg","kilogram")
 
