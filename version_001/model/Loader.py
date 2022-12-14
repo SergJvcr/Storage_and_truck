@@ -1,13 +1,15 @@
-from Actor import Actor
-from Capacity import Capacity
-from Unit import Unit
+from model.Actor import Actor
+from model.ActorStatus import ActorStatus
+from model.Capacity import Capacity
+from model.Unit import Unit
 
 LOADER_LOADING = ""
 LOADER_UNLOADING = ""
 
 class Loader(Capacity, Actor):
-    def __init__(self, capacity:float, amount:float, unit:Unit) -> None:
+    def __init__(self, capacity:float, amount:float, unit:Unit, status:ActorStatus) -> None:
         super().__init__(capacity, amount, unit)
+        super(Actor, self).__init__(status)
 
     # Когда приезжает грузовик под погрузку, вызываем этот метод с указанием экземпляра грузовика,
     # при этом грузовик пристыковывается к погрузчику
@@ -33,6 +35,3 @@ class Loader(Capacity, Actor):
 
         elif super().getStatus()==LOADER_UNLOADING:
             self.unload(self.getLinkedCapacity())
-
-
-ld: Loader = Loader()

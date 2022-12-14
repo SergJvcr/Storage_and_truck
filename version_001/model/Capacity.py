@@ -1,4 +1,4 @@
-from Unit import Unit
+from model.Unit import Unit
 class Capacity:
     def __init__(self, capacity:float, amount:float, unit:Unit):
         self.CAPACITY = capacity #общая вместимость

@@ -1,4 +1,12 @@
-from model import Unit, Storage, Shop, Loader, Actor, Truck
+#from model import Unit, Storage, Shop, Loader, Actor, Truck
+
+from model.Unit import Unit
+from model.Storage import Storage
+from model.Truck import Truck
+from model.Loader import Loader
+from model.Shop import Shop
+from model.Actor import Actor
+from model.ActorStatus import ActorStatus
 
 kg:Unit = Unit("kg","kilogram")
 
@@ -12,7 +20,7 @@ shop_2 = Shop("GreenLief st., 1/a", 250, 300, kg)
 print(storage_1, '\n' ,storage_2)
 print(shop_1, '\n' ,shop_2)
 
-ld: Loader = Loader(2, 0, kg)
+ld: Loader = Loader(2, 0, kg, ActorStatus("Ready","Ready",[]))
 
 actors: list[Actor] = list()
 for i in range(0,6):

@@ -1,5 +1,5 @@
-from Capacity import Capacity
-from Unit import Unit
+from model.Capacity import Capacity
+from model.Unit import Unit
 
 class Shop(Capacity):
     def __init__(self, address:str, capacity:float, amount:float, unit:Unit) -> None:

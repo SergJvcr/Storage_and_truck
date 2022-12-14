@@ -4,3 +4,17 @@ class ActorStatus:
         self.code = code
         self.title = title
         self.next = next    
+
+    def __str__(self) -> str:
+        return f"ActorStatus {self.code} {self.title}"
+
+
+
+
+
+
+
+
+
+
+

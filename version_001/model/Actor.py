@@ -1,5 +1,4 @@
-from ActorStatus import *
-
+from model.ActorStatus import ActorStatus
 
 class Actor:
     def __init__(self, status: ActorStatus):
@@ -20,6 +19,8 @@ class Actor:
         if st1!=st2:
             oldSt = self.status
             self.status = newStatus
-            onStatusChanged(oldSt, newStatus)
+            self.onStatusChanged(oldSt, newStatus)
 
 
+    def __str__(self) -> str:
+        return f"Actor {self.getStatus()}"

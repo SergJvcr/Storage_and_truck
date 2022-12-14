@@ -1,7 +1,8 @@
 from model.Capacity import Capacity
 from model.Unit import Unit
+from model.Actor import Actor
 
-class Truck (Capacity):
+class Truck (Capacity, Actor):
 
     def __init__(self, capacity:float, amount:float, unit:Unit) -> None:
         super().__init__(capacity, amount, unit)
