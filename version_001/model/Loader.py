@@ -5,9 +5,9 @@ from Unit import Unit
 LOADER_LOADING = ""
 LOADER_UNLOADING = ""
 
-class Loader2(Capacity, Actor):
-    def __init__(self):
-        pass
+class Loader(Capacity, Actor):
+    def __init__(self, capacity:float, amount:float, unit:Unit) -> None:
+        super().__init__(capacity, amount, unit)
 
     # Когда приезжает грузовик под погрузку, вызываем этот метод с указанием экземпляра грузовика,
     # при этом грузовик пристыковывается к погрузчику
@@ -18,12 +18,14 @@ class Loader2(Capacity, Actor):
     def unlinkCapacity(self):
         self.setLinkCapacity(None)
 
-    def load(self, obj:Capacity):
-        pass
+    def load(self, obj:Capacity, request_amount:float):
+        obj.take(request_amount)
 
-    def unload(self, obj:Capacity):
-        pass
+    def unload(self, obj:Capacity, request_amount:float)->float:
+        return obj.take(request_amount)
 
+    def __str__(self) -> str:
+        return  f'Loader cap={super().get_capacity()} amount={super().get_amount()}'
 
     def tick(self):
         if super().getStatus()==LOADER_LOADING:
@@ -33,18 +35,4 @@ class Loader2(Capacity, Actor):
             self.unload(self.getLinkedCapacity())
 
 
-ld: Loader2 = Loader2()
-
-class Loader (Capacity):
-
-    def __init__(self, capacity:float, amount:float, unit:Unit) -> None:
-        super().__init__(capacity, amount, unit)
-
-    def __str__(self) -> str:
-        pass
-
-    def load(self, obj:Capacity, request_amount:float):
-        obj.take(request_amount)
-
-    def unload(self, obj:Capacity, request_amount:float)->float:
-        return obj.take(request_amount)
+ld: Loader = Loader()
