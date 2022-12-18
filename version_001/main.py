@@ -6,9 +6,11 @@ from model.Storage import Storage
 from model.Truck import Truck
 from model.Loader import Loader
 from model.Shop import Shop
+from model.ActorStatus import ActorStatus
 
 
 kg:Unit = Unit("kg","kilogram")
+AS_READY : ActorStatus = ActorStatus("READY","Готов",[])
 
 storage_1 = Storage("Avaron st., 12", 900, 893, kg)
 storage_2 = Storage("SaintOcean st, 2/23", 1200, 1200, kg)
@@ -20,7 +22,7 @@ shop_2 = Shop("GreenLief st., 1/a", 250, 300, kg)
 print(storage_1, '\n' ,storage_2)
 print(shop_1, '\n' ,shop_2)
 
-ld: Loader = Loader(2, 0, kg)
+ld: Loader = Loader(2, 0, kg, AS_READY)
 
 trucks: list[Truck] = list()
 for i in range(0,6):

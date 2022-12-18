@@ -20,24 +20,36 @@ shop_2 = Shop("GreenLief st., 1/a", 250, 300, kg)
 print(storage_1, '\n' ,storage_2)
 print(shop_1, '\n' ,shop_2)
 
-ld: Loader = Loader(2, 0, kg, ActorStatus("Ready","Ready",[]))
 
+AS_READY : ActorStatus = ActorStatus("READY","Готов",[])
+
+ld: Loader = Loader(2, 0, kg, AS_READY)
+
+
+
+
+# ERROR in here:
 actors: list[Actor] = list()
 for i in range(0,6):
     actors.append(Truck(10,0,kg))
 
+# ERROR in here too:
 for i in range(0,6):
-    actors.append(Loader(2,0,kg))
+    actors.append(Loader(2,0,kg, AS_READY))
+
+
+
 
 hasToDo = True
 i = 0
 while (hasToDo):
     hasToDo = False
     for a in actors:
+        print(f"Processing {type(a)}")
         hasToDo = hasToDo or a.tick()
     i += 1
 
-print("=====================================")
+print(f"===================================== i={i} THE END")
 
 print(f'{i} {storage_1}')
 print(f'{i} {storage_3}')

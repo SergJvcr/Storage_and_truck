@@ -8,8 +8,8 @@ LOADER_UNLOADING = ""
 
 class Loader(Capacity, Actor):
     def __init__(self, capacity:float, amount:float, unit:Unit, status:ActorStatus) -> None:
-        super().__init__(capacity, amount, unit)
-        super(Actor, self).__init__(status)
+        Capacity.__init__(self, capacity, amount, unit)
+        Actor.__init__(self, status)
 
     # Когда приезжает грузовик под погрузку, вызываем этот метод с указанием экземпляра грузовика,
     # при этом грузовик пристыковывается к погрузчику
