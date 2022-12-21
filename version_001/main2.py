@@ -3,7 +3,7 @@
 from model.Unit import Unit
 from model.Storage import Storage
 from model.Truck import Truck
-from model.Loader import Loader
+from model.Loader import Loader, LOADER_READY, LOADER_LOADING, LOADER_UNLOADING
 from model.Shop import Shop
 from model.Actor import Actor
 from model.ActorStatus import ActorStatus
@@ -23,7 +23,7 @@ print(shop_1, '\n' ,shop_2)
 
 AS_READY : ActorStatus = ActorStatus("READY","Готов",[])
 
-ld: Loader = Loader(2, 0, kg, AS_READY)
+ld: Loader = Loader(2, 0, kg, LOADER_READY)
 
 
 

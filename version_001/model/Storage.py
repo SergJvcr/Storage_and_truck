@@ -7,4 +7,4 @@ class Storage (Capacity):
         self.address = address
 
     def __str__(self) -> str:
-        return f"The address this storage is {self.address}, capacity: {self.CAPACITY}. Occupancy the storage: {(self.amount)}"
+        return f"The address this storage is {self.address}, capacity: {self.capacity}. Occupancy the storage: {(self.amount)}"
